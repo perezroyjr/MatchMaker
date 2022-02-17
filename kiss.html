@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title> MatchMaker </title>
+		<link rel="icon" href="assets/favicon.ico" />
+		<link href="mmstyles.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<a href="intro.html">
+			<h1  id='h1-id'>&#x1F493;MatchMaker&#x1F493;</h1>
+		</a>
+		<hr>
+		<div class='center-image-inline'>
+			<a id="choice1" href="choice1.html">
+				<img src="assets/walking.gif" />
+			</a>
+		<audio autoplay>
+		<source src="assets/mylove.mp3">
+		</audio>
+		</div>
+			<p class='intro-body-text'>Congrats you've earned a second date with Sommer! :)</p>
+			<a href="intro.html"><button>Exit</button></a>
+		<hr>
+		<div>
+		<iframe src='date_meter.html' id=date_meter height=100 width=500></iframe>
+			<script>
+				date_meter.src += location.search;
+				choice1.href += location.search;
+				choice2.href += location.search;		
+			</script>
+		</div>
+		</body

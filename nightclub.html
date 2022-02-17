@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title> MatchMaker </title>
+		<link rel="icon" href="assets/favicon.ico" />
+		<link href="mmstyles.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+	</head>
+	<body>
+	<a href="intro.html">
+	<h1 id='h1-id'>&#x1F493;MatchMaker&#x1F493;</h1>
+	</a>
+	<hr>
+	<img class='center-image' src="assets/dancing.gif" />
+	<audio autoplay>
+		<source src="assets/indaclub.mp3">
+	</audio>
+		
+	<p class='intro-body-text'>Great choice Sommer loves to dance! Choose your next move and decide your fate!</p>
+	<hr>
+	<div id="options">
+	<div class='date-options'>
+	<a href="nightclub.html">
+	<img id="leave_club" src="assets/leaveclub.jpg"  onclick='kiss(); return false;'/>
+	</a>
+	<p class="intro-body-text">Go for the kiss!</p>
+	
+	</div>
+	<div class='date-options'>
+	<a href="intro.html">
+	<img id="hug_img" src="assets/hug.jpg" onclick='hug(); return false;'/>
+	</a>
+	<p class="intro-body-text">Go for the hug!</p>
+	</div>
+	</div>
+	<div>
+		<iframe src='date_meter.html' id=date_meter height=100 width=500></iframe>
+			<script>
+				kiss.href += location.search;
+				
+				var queryString = new URLSearchParams(location.search);
+				var hp = +queryString.get("hp");
+				var rf = +queryString.get("rf");
+
+				function kiss(){
+				if(hp >= 2){
+					leave_club.src = 'assets/kiss.jpg';
+					queryString.set('rf', rf);
+					queryString.set('hp', hp+1);
+					date_meter.src = 'date_meter.html?'+queryString;
+					options.innerHTML = `<img src="assets/kiss.jpg" /> <a href='kiss.html?${queryString}'><button>Continue</button></a>`
+					}
+				else{
+					leave_club.src = 'assets/ghosted.png';
+					queryString.set('rf', rf);
+					queryString.set('hp', hp);
+					date_meter.src = 'date_meter.html?'+queryString;
+					options.innerHTML = `<img src="assets/ghosted.png" /> <a href='intro.html?${queryString}'><button>Game Over</button></a>`
+
+				}
+				}
+
+			</script>
+			<script>
+				date_meter.src += location.search;
+				intro.href += location.search;
+
+				
+				var queryString = new URLSearchParams(location.search);
+				var hp = +queryString.get("hp");
+				var rf = +queryString.get("rf");
+				
+				
+				function hug(){
+					hug_img.src = 'assets/gameover.gif';
+					queryString.set('hp', hp);
+					queryString.set('rf', rf+1);
+					date_meter.src = 'date_meter.html?'+queryString;
+					options.innerHTML = `<img src="assets/gameover.gif" /><p class="GameOver">Sommer wasn't feeling the date and decided to go hang out with her friends. &#128542;</p><a href='intro.html?${queryString}'><button>Date Over</button></a>`
+				}
+			</script>
+		</div>
+	</body>
+</html>

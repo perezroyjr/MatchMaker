@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title> MatchMaker </title>
+		<link rel="icon" href="assets/favicon.ico" />
+		<link href="mmstyles.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+	</head>
+	<body>
+	<a href="intro.html">
+	<h1 id='h1-id'>&#x1F493;MatchMaker&#x1F493;</h1>
+	</a>
+	<hr>
+	<img class='center-image' src="assets/wine-happy.jpg" />
+	<p class='intro-body-text'>Great choice Sommer is having a wonderful time! Choose where you will take her next.</p>
+	<audio autoplay>
+		<source src="assets/posh.mp3">
+	</audio>
+	<hr>
+	<div id="options">
+	<div class='date-options'>
+	<a id="nightclub" href="nightclub.html" onclick='heart(); return false;'>
+	<img id="club" src="assets/e11.jpg"/>
+	</a>
+	<p class="intro-body-text">Night Club to go Dancing</p>
+	
+	</div>
+	<div class='date-options'>
+	<a id ="city_park" href="city_park.html">
+	<img src="assets/city-park.jpg"/>
+	</a>
+	<p class="intro-body-text">A night stroll through the park</p>
+	</div>
+	</div>
+	<hr>
+		<div>
+		<iframe src='date_meter.html' id=date_meter height=100 width=500></iframe>
+			<script>
+				date_meter.src += location.search;
+				nightclub.href += location.search;
+				city_park.href += location.search;	
+				
+				var queryString = new URLSearchParams(location.search);
+				var hp = +queryString.get("hp");
+				var rf = +queryString.get("rf");
+
+				function heart(){
+					club.src = 'assets/car.gif';
+					queryString.set('rf', rf);
+					queryString.set('hp', hp+1);
+					date_meter.src = 'date_meter.html?'+queryString;
+					options.innerHTML = `<img src="assets/car.gif" /> <a href='nightclub.html?${queryString}'><button>Continue</button></a>`
+
+				}
+
+			</script>
+		</div>
+	</body>
+</html>

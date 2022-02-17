@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title> MatchMaker </title>
+		<link rel="icon" href="assets/favicon.ico" />
+		<link href="mmstyles.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<a href="intro.html">
+			<h1 id='h1-id'>&#x1F493;MatchMaker&#x1F493;</h1>
+		</a>
+		<hr>
+		<img class='center-image' src="assets/sommer-dress.png" />
+		<p class='intro-body-text'>You pick up Sommer from her apartment! Choose where you will take her.</p>
+		<hr>
+		<div id='options'>
+			<div class='date-options'>
+				<a id='fancy_dinner' href="fancy_dinner.html" onclick='heart(); return false;'>
+				<img id="dinner" src="assets/fancy-dinner.jpeg"/>
+				</a>
+			<p class="intro-body-text">Fancy Dinner</p>
+		
+		</div>
+		<div class='date-options'>
+			<a id='park_cafe' href="park_cafe.html" onclick='redflag(); return false;'>
+				<img src="assets/park-cafe.jpg"/>
+			</a>
+		<p class="intro-body-text">Park Cafe</p>
+		</div>
+		</div>
+		<hr>
+		<div>
+		<iframe src='date_meter.html' id=date_meter height=100 width=500></iframe>
+			<script>
+				
+	
+				function heart(){
+				date_meter.src += location.search;
+				fancy_dinner.href += location.search;
+				park_cafe.href += location.search;	
+				
+				var queryString = new URLSearchParams(location.search);
+				var hp = +queryString.get("hp");
+				var rf = +queryString.get("rf");
+					dinner.src = 'assets/car.gif';
+					queryString.set('hp', hp+1);
+					queryString.set('rf', rf);
+					date_meter.src = 'date_meter.html?'+queryString;
+					options.innerHTML = `<img src="assets/car.gif" /> <a href='fancy_dinner.html?${queryString}'><button>Continue</button></a>`
+				} 
+			</script>
+			
+			<script>
+				date_meter.src += location.search;
+				fancy_dinner.href += location.search;
+				park_cafe.href += location.search;	
+				
+				var queryString = new URLSearchParams(location.search);
+				var hp = +queryString.get("hp");
+				var rf = +queryString.get("rf");
+				
+				
+				function redflag(){
+					dinner.src = 'assets/car.gif';
+					queryString.set('hp', hp);
+					queryString.set('rf', rf+1);
+					date_meter.src = 'date_meter.html?'+queryString;
+					options.innerHTML = `<img src="assets/car.gif" /> <a href='park_cafe.html?${queryString}'><button>Continue</button></a>`
+				}
+			</script>
+		</div>
+	</body>
+</html>

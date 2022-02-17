@@ -1,0 +1,23 @@
+<html>
+	<head>
+	</head>
+	<body>
+		Date Meter: <hr>
+		<table>
+			<tr>
+				<th> &#x1F491; </th>
+				<th> &#128681; </th>
+			</tr>	
+			<tr>
+				<td id='hp'>0</td>
+				<td id='rf'>0</td>
+			</tr>
+		</table>
+		<script>
+			var queryString = new URLSearchParams(location.search)
+			hp.innerText = queryString.get("hp")
+			rf.innerText = queryString.get("rf")
+		</script>
+		
+	</body>
+</html>
